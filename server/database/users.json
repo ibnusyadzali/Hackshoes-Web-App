@@ -1,0 +1,18 @@
+[
+    {
+        "username":"Ibnu",
+        "email":"ibnu@mail.com",
+        "password":"666666",
+        "role":"admin",
+        "phoneNumber":"8172683761",
+        "address":"Pondok Ungu Permai, Bekasi Jawa Barat"
+    },
+    {
+        "username":"Reyhan",
+        "email":"reyhan@mail.com",
+        "password":"666666",
+        "role":"user",
+        "phoneNumber":"91728736817",
+        "address":"Ciputat, Jakarta Selatan"
+    }
+]

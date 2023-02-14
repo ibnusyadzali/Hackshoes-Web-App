@@ -1,0 +1,63 @@
+body {
+  background-image: url("https://images.unsplash.com/photo-1552346154-21d32810aba3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+  background-repeat: no-repeat;
+  background-size:auto;
+  }
+  
+  .img {
+    width: auto;
+    height: 250px;
+    object-fit: cover;
+  }
+  .tableImg {
+    width: auto;
+    height: 50px;
+    object-fit: cover;
+  }
+  .DetailImg {
+    width: auto;
+    height: 700px;
+    object-fit: cover;
+  }
+  .logo {
+    width: auto;
+    height: 50px;
+    object-fit: cover;
+  }
+  
+  .blur {
+    backdrop-filter: blur(1rem);
+    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0,5);
+    background-color: rgba(255,255,255,0.1);
+  }
+  .blurTable {
+    backdrop-filter: blur(1rem);
+    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0,5);
+    background-color: rgba(255,255,255,0.5);
+  }
+  
+  .scroll {
+    display: block;
+    height: 500px;
+    overflow: auto;
+  }
+  .scrollCategory {
+    display: block;
+    height: 200px;
+    overflow: auto;
+  }
+
+  .carouselImg {
+    width: auto;
+    height: 450px;
+    object-fit: cover;
+  }
+  
+  .fontstyle {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .btn1 {
+    z-index: 100;
+    cursor: pointer;
+  }

@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     command: ["-c","./wait-for-it.sh -t 30 db:5432 && sleep 10 && node app"]
     ports:
-      - 4000:4000
+      - 127.0.0.1:45003:4000
     depends_on:
       - db
       - migration

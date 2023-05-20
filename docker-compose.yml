@@ -1,0 +1,33 @@
+version: '3'
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    command: ["-c","./wait-for-it.sh -t 30 db:5432 && sleep 10 && node app"]
+    ports:
+      - 4000:4000
+    depends_on:
+      - db
+      - migration
+
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "localhost", "-p", "5432", "-U", "postgres", "-d", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  server-migration:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    command: ["-c", "./wait-for-it.sh -t 30 db:5432 && npx sequelize-cli db:create && npx sequelize db:migrate && npx sequelize-cli db:seed:all && echo 'DONE' && sleep infinity"]
+    depends_on:
+      - db

@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     command: ["-c","./wait-for-it.sh -t 30 db:5432 && sleep 10 && node app"]
     ports:
-      - 45003:4000
+      - 127.0.0.1:45003:4000
     depends_on:
       - db
       - migration
@@ -15,7 +15,7 @@ services:
     image: dpage/pgadmin4
     restart: unless-stopped
     ports:
-      - 45004:80
+      - 127.0.0.1:45004:80
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@habibiefaried.com
       PGADMIN_DEFAULT_PASSWORD: 4dm1N2023
@@ -27,14 +27,14 @@ services:
       context: ./client-user
       dockerfile: Dockerfile
     ports:
-      - 45013:3000
+      - 127.0.0.1:45013:3000
 
   client-admin:
     build:
       context: ./client-admin
       dockerfile: Dockerfile
     ports:
-      - 45014:3000
+      - 127.0.0.1:45014:3000
 
   db:
     image: postgres

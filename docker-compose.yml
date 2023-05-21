@@ -22,6 +22,20 @@ services:
     depends_on:
       - db
 
+  client-user:
+    build:
+      context: ./client-user
+      dockerfile: Dockerfile
+    ports:
+      - 45013:3000
+
+  client-admin:
+    build:
+      context: ./client-admin
+      dockerfile: Dockerfile
+    ports:
+      - 45014:3000
+
   db:
     image: postgres
     restart: unless-stopped

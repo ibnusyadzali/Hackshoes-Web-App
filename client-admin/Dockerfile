@@ -15,4 +15,4 @@ RUN npm cache clean --force && npm install && npm run build && npm install -g se
 EXPOSE 3000
 
 # Start the web app
-CMD [ "serve", "-s", "dist" ]
+CMD [ "serve", "-s", "build" ]

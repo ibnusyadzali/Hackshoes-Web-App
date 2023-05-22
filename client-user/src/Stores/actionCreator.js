@@ -1,5 +1,5 @@
 import {PRODUCT_GET_PRODUCT, PRODUCT_GET_PRODUCT_DETAIL, PRODUCT_GET_NEW_ARRIVALS} from "./actionType"
-const url = 'https://hackshoesbackend.habibiefaried.com/'
+const url = 'https://hackshoes-server.ibnusyadzali.com/'
 
 export const getProducts = (payload) => {
     return {

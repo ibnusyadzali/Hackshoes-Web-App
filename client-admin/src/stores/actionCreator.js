@@ -1,5 +1,5 @@
 import { CATEGORIES_GET_ALLCATEGORIES, ALLPRODUCTTABLE_GET_PRODUCT_DETAIL, ALLPRODUCTTABLE_GET_ALLPRODUCTS } from "./actionType";
-const url = 'https://hackshoesbackend.habibiefaried.com/'
+const url = 'https://hackshoes-server.ibnusyadzali.com/'
 
 
 export const loginAction = (values) => {

@@ -1,11 +1,11 @@
 import { CATEGORIES_GET_ALLCATEGORIES, ALLPRODUCTTABLE_GET_PRODUCT_DETAIL, ALLPRODUCTTABLE_GET_ALLPRODUCTS } from "./actionType";
-const url = ''
+const url = 'https://hackshoesbackend.habibiefaried.com/'
 
 
 export const loginAction = (values) => {
   return async () => {
     try {
-      const res = await fetch("http://localhost:4000/admins/login", {
+      const res = await fetch(url + "admins/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const logoutAction = () => {
 export const registerAction = (values) => {
   return async () => {
     try {
-      await fetch("http://localhost:4000/admins/register", {
+      await fetch(url + "admins/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export const getAllProducts = (payload) => {
 export const fetchAllProductsAction = () => {
   return async (dispatcher) => {
     try {
-      const res = await fetch("http://localhost:4000/admins/products", {
+      const res = await fetch(url + "admins/products", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -79,7 +79,7 @@ export const getProductDetail = (payload) => {
 export const fetchProductDetailAction = (id) => {
   return async (dispatcher) => {
     try {
-      const res = await fetch(`http://localhost:4000/admins/${id}`, {
+      const res = await fetch(url + `admins/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -98,7 +98,7 @@ export const fetchProductDetailAction = (id) => {
 export const deleteProductAction = (id) => {
   return async (dispatcher) => {
     try {
-      await fetch(`http://localhost:4000/admins/product/${id}`, {
+      await fetch(url + `admins/product/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -122,7 +122,7 @@ export const addProductAction = (values) => {
     delete values.additionalImages3;
     values.additionalImages = additionalImages;
     try {
-      await fetch(`http://localhost:4000/admins/add`, {
+      await fetch(url + `admins/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -146,7 +146,7 @@ export const updateProductAction = (values,id) => {
     delete values.additionalImages3;
     values.additionalImages = additionalImages;
     try {
-      await fetch(`http://localhost:4000/admins/${id}`, {
+      await fetch(url + `admins/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -171,7 +171,7 @@ export const getAllCategories = (payload) => {
 export const fetchAllCategoriesAction = () => {
   return async (dispatcher) => {
     try {
-      const res = await fetch(`http://localhost:4000/admins/categories`, {
+      const res = await fetch(url + `admins/categories`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -189,7 +189,7 @@ export const fetchAllCategoriesAction = () => {
 export const deleteCategoryAction = (id) => {
   return async (dispatcher) => {
     try {
-      await fetch(`http://localhost:4000/admins/category/${id}`, {
+      await fetch(url + `admins/category/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -207,7 +207,7 @@ export const deleteCategoryAction = (id) => {
 export const addCategoryAction = (values) => {
   return async (dispatcher) => {
     try {
-      await fetch(`http://localhost:4000/admins/addCategory`, {
+      await fetch(url + `admins/addCategory`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

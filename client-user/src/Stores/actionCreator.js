@@ -1,4 +1,5 @@
 import {PRODUCT_GET_PRODUCT, PRODUCT_GET_PRODUCT_DETAIL, PRODUCT_GET_NEW_ARRIVALS} from "./actionType"
+const url = 'https://hackshoes-server.ibnusyadzali.com/'
 
 export const getProducts = (payload) => {
     return {
@@ -22,7 +23,7 @@ export const getNewArrivals = (payload) => {
 export const fetchProductsAction = () => {
     return async (dispatcher) => {
         try {
-            const res = await fetch("http://localhost:4000/users/products")
+            const res = await fetch(url + "users/products")
             const data = await res.json()
 
             dispatcher(getProducts(data))
@@ -35,7 +36,7 @@ export const fetchProductsAction = () => {
 export const fetchProductDetailAction = (id) => {
     return async (dispatcher) => {
         try {
-            const res = await fetch(`http://localhost:4000/users/${id}`)
+            const res = await fetch(url + `users/${id}`)
             const data = await res.json()
 
             dispatcher(getProductDetail(data))
@@ -48,7 +49,7 @@ export const fetchProductDetailAction = (id) => {
 export const fetchNewArrivalsAction = (released, id) => {
     return async (dispatcher) => {
         try {
-            const res = await fetch("http://localhost:4000/users/new")
+            const res = await fetch(url + "users/new")
             const data = await res.json()
 
             dispatcher(getNewArrivals(data))

@@ -1,0 +1,57 @@
+version: '3'
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    command: ["-c","./wait-for-it.sh -t 30 db:5432 && sleep 10 && node app"]
+    ports:
+      - 127.0.0.1:45003:4000
+    depends_on:
+      - db
+      - migration
+
+  client-user:
+    build:
+      context: ./client-user
+      dockerfile: Dockerfile
+    ports:
+      - 127.0.0.1:45013:3000
+
+  client-admin:
+    build:
+      context: ./client-admin
+      dockerfile: Dockerfile
+    ports:
+      - 127.0.0.1:45014:3000
+
+  db:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "localhost", "-p", "5432", "-U", "postgres", "-d", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  server-migration:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    command: ["-c", "./wait-for-it.sh -t 30 db:5432 && npx sequelize-cli db:create && npx sequelize db:migrate && npx sequelize-cli db:seed:all && echo 'DONE' && sleep infinity"]
+    depends_on:
+      - db
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    ports:
+      - '127.0.0.1:45015:80'
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@ibnusyadzali.com
+      - PGADMIN_DEFAULT_PASSWORD=4dm1n123
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
